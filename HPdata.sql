@@ -1,5 +1,7 @@
 -- Assessment Solution
 
+--You can find the data here https://drive.google.com/file/d/1qKA3gfXoQptEct37wezkrSNuwYmbz_kE/view?usp=sharing
+--(view only, but you could download it) if you find problems downloading it, feel free to e-mail me.
 
 -- Data analysis questions:
 -- 1.	Does the data require cleaning (missing values/outlier treatment etc.)?
