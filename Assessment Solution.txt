@@ -190,8 +190,6 @@ ORDER BY product_category_id, year;
 -- 2015 to 2015. We see a drastic stop from 2013 to 2014 because it barely increased. We might learn from 2012 and
 -- avoid what happen in 2013
 
---I also made a visualization of the data with Power BI where you can see the data trending.
-
 --
 
 -- 3.	Segment all customers in the data using the following rules. The groups should be mutually exclusive i.e. one
@@ -326,7 +324,7 @@ SELECT
     EXTRACT(QUARTER FROM order_creation_date) AS quarter,
     COUNT(DISTINCT email_id) AS repeat_count
 FROM
-    public.sql_test  -- Replace 'public' with your actual schema name if different
+    public.sql_test
 WHERE
     email_id IN (
         SELECT email_id
@@ -335,7 +333,7 @@ WHERE
                 email_id,
                 ROW_NUMBER() OVER (PARTITION BY email_id ORDER BY order_creation_date) AS rn
             FROM
-                public.sql_test  -- Replace 'public' with your actual schema name if different
+                public.sql_test
         ) sub
         WHERE rn > 1
     )
@@ -377,10 +375,10 @@ FROM
 WHERE
     email_id IN (
         SELECT DISTINCT email_id
-        FROM public.sql_test  -- Replace 'public' with your actual schema name if different
+        FROM public.sql_test
         WHERE EXTRACT(YEAR FROM order_creation_date) = (
             SELECT MAX(EXTRACT(YEAR FROM order_creation_date))
-            FROM public.sql_test  -- Replace 'public' with your actual schema name if different
+            FROM public.sql_test
         ) - 1
     )
     AND email_id NOT IN (
